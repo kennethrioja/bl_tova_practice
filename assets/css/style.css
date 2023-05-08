@@ -1,0 +1,36 @@
+body {
+    background-color: #101010; /* change background color here */
+    color: #ffffff /* and font color here */
+}
+
+.highlight-green {
+    color: #008000;
+    font-weight: bold;
+}
+
+.highlight-red {
+    color: #ff0000;
+    font-weight: bold;
+}
+
+.fixcross {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+}
+
+.up {
+    position: fixed;
+    top: 33.33%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.down {
+    position: fixed;
+    top: 66.66%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
