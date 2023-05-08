@@ -23,7 +23,7 @@ var tova_down = `
 // background color = black, see 'assets/css/style.css'
 var fixation_cross = '<div class="fixcross" id="cross">+</div>'; // to change its size, see 'assets/css/style.css'
 var practice_array = [1,1,0,1,0,1,1,1,0,0]; // 1 for go, 0 for no go – modify this array to suit your needs
-var time_before_trials = 2000; // time to wait before getting into the trials
+var post_instructions_time = 2000; // time to wait after instruction to begin the trials
 var feedback_color = true; // change to false to prevent colored feedback at the end of each trial, see plugin-html-keyboard-response.js
 
 // strings
@@ -120,9 +120,9 @@ var instructions = {
     'Whenever you are ready, click the button below to begin the practice, the first trial will begin after 2 seconds.'
     ],
     show_clickable_nav: true,
-    on_finish: function(data){ // wait time_before_trials ms before getting to the next block
+    on_finish: function(data){ // wait post_instructions_time ms before getting to the next block
         jsPsych.pauseExperiment();
-        setTimeout(jsPsych.resumeExperiment, time_before_trials);
+        setTimeout(jsPsych.resumeExperiment, post_instructions_time);
     }
 }
 timeline.push(instructions);
@@ -216,9 +216,9 @@ var debrief_block = {
         return `${endblock_str1}${go_accuracy}${endblock_str2}${nogo_accuracy}${endblock_str3}`;
 
     },
-    on_finish: function(data){ // wait time_before_trials ms before getting to the next block
+    on_finish: function(data){ // wait post_instructions_time ms before getting to the next block
         jsPsych.pauseExperiment();
-        setTimeout(jsPsych.resumeExperiment, time_before_trials);
+        setTimeout(jsPsych.resumeExperiment, post_instructions_time);
     }
 }
 
