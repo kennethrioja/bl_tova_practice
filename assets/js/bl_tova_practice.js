@@ -20,7 +20,7 @@ var tova_up = `
 var tova_down = `
 <div class='down' id='square'><img src='assets/img/square.png' style="width:${stim_width}px"></img></div>
 `;
-// background color = black, see 'assets/css/style.css'
+// background color, see 'assets/css/style.css', grey "#202020" for instructions and black for trials
 var fixation_cross = '<div class="fixcross" id="cross">+</div>'; // to change its size, see 'assets/css/style.css'
 var practice_array = [1,1,0,1,0,1,1,1,0,0]; // 1 for go, 0 for no go – modify this array to suit your needs
 var post_instructions_time = 2000; // time to wait after instruction to begin the trials
@@ -99,28 +99,35 @@ var instructions = {
     type: jsPsychInstructions,
     pages: [
     // 1
-    'This test measures your ability to pay attention. You will be presented with briefly flashed displays that contain a square.',
+    'This test measures your ability to pay attention.' + '<br>' +
+    '<br>' +
+    'You will be presented with briefly flashed displays that contain a square.',
     // 2
-    'If the square is presented at the TOP, please <span class="highlight-green">press the spacebar</span>' +
+    'If the square is presented at the TOP, please <span class="highlight-green">press the spacebar</span>' + '<br>' +
     '<br>' +
-    '<img src="assets/img/tova_up.png"></img>',
+    '<img src="assets/img/tova_up.png" width="800" heigth="auto"></img>',
     // 3
-    'If the square is presented at the BOTTOM, <span class="highlight-red">don’t press the spacebar</span>' +
+    'If the square is presented at the BOTTOM, <span class="highlight-red">don’t press the spacebar</span>' + '<br>' + 
     '<br>' +
-    '<img src="assets/img/tova_down.png"></img>',
+    '<img src="assets/img/tova_down.png" width="800" heigth="auto"></img>',
     // 4
-    'Don’t guess where the square will flash, make sure you see it before you press the button. Try to balance speed and accuracy : press the button as fast as you can, but also try not to make any mistakes. If you do make a mistake, don’t worry : anyone can make a mistake on this test.',
+    'Don’t guess where the square will flash, make sure you see it before you press the button.' + '<br>' +
+    '<br>' +
+    'Try to balance speed and accuracy : press the button as fast as you can, but also try not to make any mistakes.' + '<br>' +
+    '<br>' +
+    'If you do make a mistake, don’t worry : anyone can make a mistake on this test.',
     // 5
-    'You are about to take a short practice test.' +
+    'Remember : ' + '<br>' +
     '<br>' +
-    `You are going to see a cross appear in the middle of the screen - please fixate there. After a few seconds, the square will flash either above the cross (TOP -> press the spacebar) or down the cross (BOTTOM -> don't press the spacebar).` +
+    `If the square is presented at the TOP, please press the spacebar.` + '<br>' + 
+    `If the square is presented at the BOTTOM, don’t press the spacebar.` + '<br>' +
+    'Please be as fast and as accurate as possible.' + '<br>' +
     '<br>' +
-    'Remember, the whole idea is to be as fast AND accurate as you can be.' +
-    '<br>' +
-    'Whenever you are ready, click the button below to begin the practice, the first trial will begin after 2 seconds.'
+    'Click the button "Next" to start the parctice.'
     ],
     show_clickable_nav: true,
-    on_finish: function(data){ // wait post_instructions_time ms before getting to the next block
+    on_finish: function(data){ // change color to black and wait post_instructions_time ms before getting to the first block
+        document.body.style.backgroundColor = '#000000';
         jsPsych.pauseExperiment();
         setTimeout(jsPsych.resumeExperiment, post_instructions_time);
     }
@@ -215,6 +222,9 @@ var debrief_block = {
 
         return `${endblock_str1}${go_accuracy}${endblock_str2}${nogo_accuracy}${endblock_str3}`;
 
+    },
+    on_start: function() {
+        document.body.style.backgroundColor = '#202020'; // back to grey
     },
     on_finish: function(data){ // wait post_instructions_time ms before getting to the next block
         jsPsych.pauseExperiment();
