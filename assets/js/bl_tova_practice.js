@@ -24,7 +24,8 @@ var tova_down = `
 var fixation_cross = '<div class="fixcross" id="cross">+</div>'; // to change its size, see 'assets/css/style.css'
 var practice_array = [1,1,0,1,0,1,1,1,0,0]; // 1 for go, 0 for no go – modify this array to suit your needs
 var post_instructions_time = 2000; // time to wait after instruction to begin the trials
-var feedback_color = true; // change to false to prevent colored feedback at the end of each trial, see plugin-html-keyboard-response.js
+var show_fixcross = false; // true = show fixation cross
+var feedback_color = false; // true = green/red fixation cross depending on correct/incorrect at the end of each trial, see plugin-html-keyboard-response.js
 
 // strings
 var welcome_str = `
@@ -159,7 +160,10 @@ var trial = {
     stimulus_duration: pres_time, // this is the stimulus presentation
     trial_duration: soa, // this is the soa
     response_ends_trial: false, // false means when a response is done, the trial is not stopping
-    prompt: fixation_cross, // this show the fixation cross all along
+    prompt: function() {
+        if (show_fixcross)
+            return (fixation_cross); // this show the fixation cross all along
+    },
     data: {
         block: '', // is modified at the begining of the block/timeline, see on_timeline_start
         condition: jsPsych.timelineVariable('condition'),
