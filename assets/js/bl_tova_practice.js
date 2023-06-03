@@ -141,7 +141,7 @@ if (!ask_for_id) {
             jsPsych.data.addProperties({
                 presentation_time: pres_time,
                 soa: soa,
-                stimulus_diagonal: stim_diag_px
+                stimulus_diagonal_in_px: stim_diag_px
             });
         }
     };
