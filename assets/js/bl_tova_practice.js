@@ -132,8 +132,6 @@ if (!ask_for_id) {
             get_subject_id ?
                 jsPsych.data.addProperties({ subject_id: get_subject_id })
                 : jsPsych.data.addProperties({ subject_id: data.response.survey_subject_id });
-            console.log(jsPsych.data.get().last(1).values()[0]);
-            console.log(data.subject_id);
             get_study_id ?
                 jsPsych.data.addProperties({ study_id: get_study_id })
                 : jsPsych.data.addProperties({ study_id: data.response.survey_study_id });
