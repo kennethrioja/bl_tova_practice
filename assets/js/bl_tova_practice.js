@@ -331,7 +331,7 @@ timeline.push({
         console.log(final.csv()); // can be removed
         final.localSave('csv', data.subject_id + "_blTova_practice_" + date.getFullYear() + month + day + ".csv"); // BACK-END : need to save this csv in the back-end
         window.onbeforeunload = null; // disables the prevention
-        window.location.replace("../../bl_tova/index.html?PROLIFIC_PID=" + data.subject_id + "&STUDY_ID=" + data.study_id + "&SESSION_ID=" + data.session_id); // autoredirects to task, whenever the folder of the practice is at the same level than the folder of the task
+        window.location.replace("../bl_tova/index.html?PROLIFIC_PID=" + data.subject_id + "&STUDY_ID=" + data.study_id + "&SESSION_ID=" + data.session_id); // autoredirects to task, whenever the folder of the practice is at the same level than the folder of the task
     }
 });
 
